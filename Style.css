@@ -1724,4 +1724,23 @@ select:focus {
     flex-direction: column;
   }
 }
+.site-title {
+  background: rgba(25, 0, 60, 0.6);
+  padding: 25px;
+  text-align: center;
+}
+
+.site-banner {
+  width: 90%;               /* العرض النسبي للموقع */
+  max-width: 900px;         /* أقصى عرض */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(169, 138, 255, 0.4);
+  transition: 0.3s ease;
+}
+
+.site-banner:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 35px rgba(169, 138, 255, 0.6);
+}
 
