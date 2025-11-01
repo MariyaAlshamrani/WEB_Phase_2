@@ -1733,9 +1733,9 @@ select:focus {
 .site-banner {
   width: 80%;               /* العرض النسبي للموقع */
   max-width: 900px;         /* أقصى عرض */
-  height: 140px;
+  height: 150px;
   border-radius: 12px;
-   object-fit: cover;
+ 
   box-shadow: 0 0 25px rgba(169, 138, 255, 0.4);
   transition: 0.3s ease;
 }
@@ -1744,6 +1744,7 @@ select:focus {
   transform: scale(1.02);
   box-shadow: 0 0 35px rgba(169, 138, 255, 0.6);
 }
+
 
 
 
