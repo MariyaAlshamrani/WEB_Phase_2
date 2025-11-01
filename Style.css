@@ -1500,3 +1500,237 @@ VOLUNTEERING PAGE
   box-shadow: 0 0 15px #a98aff;
 
 }
+/* ===== Dashboard / Customer Pages (extra styles) ===== */
+
+/* شريط علوي بسيط للداشبورد غير عن الهيدر الرئيسي */
+.header-bar {
+  background: linear-gradient(90deg, #150046, #320065);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 24px;
+  box-shadow: 0 0 10px rgba(169, 138, 255, 0.3);
+}
+
+/* اللوقو داخل شريط الداشبورد فقط (عشان ما يكبر لوقو الهوم) */
+.header-bar .logo {
+  width: 60px;
+  height: auto;
+}
+
+/* نص العنوان داخل الداشبورد */
+.header-bar .icons {
+  font-size: 14px;
+  color: #a5ffb3;
+}
+
+/* عنوان الصفحة تحت الهيدر */
+.site-title {
+  background: rgba(25, 0, 60, 0.6);
+  padding: 20px 24px;
+  font-size: 26px;
+  color: #cfcbda;
+  text-align: center;
+}
+.breadcrumb {
+  padding: 10px 24px;
+  color: #b39cff;
+  font-size: 14px;
+  background: transparent;
+}
+
+/* نفس الكونتينر حقك */
+.container {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 12px;
+}
+
+/* تخطيط الداشبورد: يسار طلبات، يمين إشعارات */
+.dashboard-grid {
+  display: flex;
+  gap: 24px;
+}
+
+/* كرت عام للداشبورد (غير عن service-card حق المجموعة) */
+.card {
+  border: 1px solid #5e4b9a;
+  padding: 18px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  transition: 0.3s;
+  color: #eaeaea;
+}
+.card:hover {
+  box-shadow: 0 0 15px #9b6fff;
+  transform: scale(1.02);
+}
+.card h4 {
+  color: #a5ffb3;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.card p {
+  color: #ccc;
+  font-size: 0.95em;
+}
+
+/* قائمة الطلبات السابقة */
+.requests {
+  flex: 2;
+}
+.request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #333;
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.request-item .meta {
+  font-size: 14px;
+  color: #ccc;
+}
+.request-item .status {
+  font-weight: 600;
+  color: #a5ffb3;
+}
+/* حالات ملوّنة */
+.status.APPROVED { color:#a5ffb3; text-shadow: 0 0 6px #57e67b; }
+.status.PENDING  { color:#ffd86e; text-shadow: 0 0 6px #e6b857; }
+.status.DECLINED { color:#ff6b6b; text-shadow: 0 0 8px #ff3c3c; }
+
+/* عمود اليمين في الداشبورد */
+.sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.sidebar .announce,
+.sidebar .quick {
+  min-height: 120px;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #333;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* أزرار الداشبورد */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #b39cff;
+  background: transparent;
+  color: #b39cff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #b39cff;
+  color: #0a0123;
+}
+.btn-primary {
+  background: linear-gradient(90deg,#9b6fff,#00bcd4);
+  color: #fff;
+  border: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg,#00bcd4,#9b6fff);
+}
+
+/* فورم طلب خدمة / تقييم */
+.form-grid {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+.form-left,
+.form-right {
+  flex: 1;
+}
+.input,
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 14px;
+}
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+.input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #a98aff;
+  box-shadow: 0 0 5px #a98aff;
+}
+.form-actions {
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* نجوم التقييم */
+.rating {
+  display: inline-flex;
+  direction: rtl;
+}
+.rating input { display:none; }
+.rating label {
+  font-size: 30px;
+  color: lightgray;
+  cursor: pointer;
+  transition: color .2s;
+}
+.rating label:hover,
+.rating label:hover ~ label {
+  color: gold;
+}
+.rating input:checked ~ label {
+  color: gold;
+}
+
+/* فوتر خاص لو صفحة الداشبورد ما استخدمت فوتر المجموعة */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0a0123;
+  padding: 20px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 0.9em;
+}
+.footer .logo-footer {
+  font-weight: 600;
+  color: #a98aff;
+}
+.small {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* نفس الريسبونسيف تبعك */
+@media (max-width:880px) {
+  .dashboard-grid,
+  .form-grid {
+    flex-direction: column;
+  }
+}
