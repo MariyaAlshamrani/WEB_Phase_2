@@ -1724,28 +1724,21 @@ select:focus {
     flex-direction: column;
   }
 }
+
 .site-title {
-  background: rgba(25, 0, 60, 0.6);
-  padding: 25px;
+  background: none;       
+  padding: 0;            
   text-align: center;
+  overflow: hidden;     
 }
 
 .site-banner {
-  width: 80%;               /* العرض النسبي للموقع */
-  max-width: 900px;         /* أقصى عرض */
-  height: 150px;
-  border-radius: 12px;
- 
-  box-shadow: 0 0 25px rgba(169, 138, 255, 0.4);
-  transition: 0.3s ease;
+  width: 100%;            /* تاخذ عرض الصفحة كامل */
+  max-height: 230px;      /* نتحكم بالارتفاع */
+  object-fit: cover;      /* يخليها تملى المساحة بدون تمدد */
+  border-radius: 0;       /* بدون زوايا ناعمة لأنها بانر */
+  display: block;
 }
-
-.site-banner:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 35px rgba(169, 138, 255, 0.6);
-}
-
-
 
 
 
