@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Join - Next Saudi</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo-section">
+      <img src="logo.png" alt="Next Saudi Logo" class="logo">
+      <div class="title-group">
+        <h1>Next Saudi – Explore the Future</h1>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <a href="index.html">Home</a> |
+      <a href="services.html">Services</a> |
+      <a href="AboutJoin.html" class="active">About Us</a> |
+      <a href="provider.html">Provider Dashboard</a> |
+      <a href="customer.html">Customer Dashboard</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="hero3.jpg" alt="Riyadh Night">
+    <div class="hero-text"></div>
+  </section>
+
+  <section class="plans-section">
+    <div class="plans-text">
+      <h2>Our Plans</h2>
+      <p>
+        In alignment with Saudi Vision 2030, our goal is to empower innovation and 
+        digital transformation across the Kingdom. Through our platform, we aim to 
+        highlight national projects, support creative talents, and inspire the next 
+        generation to build a smarter, more sustainable Saudi Arabia.
+      </p>
+    </div>
+
+    <div class="plans-images">
+      <div>
+        <img src="event1.jpg" alt="Saudi Vision Event 1" class="plan-img">
+      </div>
+      <div>
+        <img src="event2.jpg" alt="Saudi Vision Event 2" class="plan-img">
+      </div>
+      <div>
+        <img src="event3.jpg" alt="Saudi Vision Event 3" class="plan-img">
+      </div>
+    </div>
+  </section>
+
+  <section class="members-section">
+    <h2>Meet Our Members</h2>
+    <div class="members-container">
+      <div>
+        <img src="user-icon.png" alt="Member 1">
+        <p><a href="MemberProfile.html">Sara</a></p>
+      </div>
+      <div>
+        <img src="user-icon.png" alt="Member 2">
+        <p><a href="MemberProfile2.html">Khaled</a></p>
+      </div>
+      <div>
+        <img src="user-icon.png" alt="Member 3">
+        <p><a href="MemberProfile3.html">Maria</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="join-section">
+    <h2>Fill The Form</h2>
+    <p>If you are interested to join our team!</p>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td rowspan="3">
+            <label for="photo">Add your Photo</label><br>
+            <input type="file" id="photo" name="photo" accept="image/*">
+          </td>
+          <td><label for="name">Name:</label></td>
+          <td><input type="text" id="name" name="name" placeholder="Your name"></td>
+        </tr>
+
+        <tr>
+          <td><label for="dob">DoB:</label></td>
+          <td><input type="date" id="dob" name="dob"></td>
+        </tr>
+
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input type="email" id="email" name="email" placeholder="example@gmail.com"></td>
+        </tr>
+
+        <tr>
+          <td><label for="education">Education:</label></td>
+          <td colspan="2">
+            <select id="education" name="education">
+              <option value="">Select</option>
+              <option value="Bachelor">Bachelor</option>
+              <option value="Master">Master</option>
+              <option value="PhD">PhD</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="skills">Skills:</label></td>
+          <td colspan="2"><input type="text" id="skills" name="skills" placeholder="Your skills"></td>
+        </tr>
+
+        <tr>
+          <td><label for="expertise">Area of expertise:</label></td>
+          <td colspan="2"><input type="text" id="expertise" name="expertise" placeholder="Description"></td>
+        </tr>
+
+        <tr>
+          <td colspan="3" style="text-align:center;">
+            <button type="submit">Submit</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Next Saudi. All Rights Reserved.</p>
+    <p>Contact: info@nextsaudi.com | +966 555 2030</p>
+    <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
+  </footer>
+
+</body>
+</html>
