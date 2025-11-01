@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service List</title>
+	<link rel="stylesheet" href="styles.css">
+    <style>
+
+        .services-list-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .service-card {
+            padding: 10px;
+            width: 200px;
+            flex-shrink: 0;
+        }
+
+        .card-header {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+            background-color: #eaeaea;
+            margin-bottom: 10px;
+        }
+
+        .edit-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 3px 6px;
+            z-index: 10;
+            line-height: 1;
+        }
+
+        .card-body p {
+            margin: 3px 0;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .service-name {
+            font-weight: bold;
+        }
+
+        .action-buttons-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: flex-start;
+        }
+
+        .action-button {
+            background: linear-gradient(90deg, #9b6fff, #00bcd4);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-align: center;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<header class="header">
+    <div class="logo-section">
+        <img class="logo" src="images/logo.png" alt="logo">
+    </div>
+    <h1>Next Saudi</h1>
+</header>
+
+<nav class="navbar">
+	<ul>
+		<li><a href="index.html">Home</a> </li>
+		<li><a href="services.html">Services</a> </li>
+		<li><a href="FirstPage.html">About Us</a> </li>
+		<li><a href="provider.html" class="active">Provider Dashboard</a> </li>
+		<li><a href="customer.html">Customer Dashboard</a></li>
+	</ul>
+</nav>
+
+<body>
+
+<h1>Service's List</h1>
+
+<div class="services-list-container">
+    <div class="service-card">
+        <img src="images/alula.jpg" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">Alula</p>
+            <p class="service-city">Alula</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <img src="images/diriyah.jpg" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">Diryah Gate</p>
+            <p class="service-city">Riyadh</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <img src="images/redsea.jpg" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">Red Sea</p>
+            <p class="service-city">Jeddah</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <img src="images/king_salman_park.jpg" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">King Salman Park</p>
+            <p class="service-city">Riyadh</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+    
+    <div class="service-card">
+        <img src="images/neom.jpg" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">Neom</p>
+            <p class="service-city">Neom</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <img src="images/qiddiya.jpeg" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">Qiddiyah</p>
+            <p class="service-city">Riyadh</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <img src="images/riyadhart.jpg" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">Riyadh Art</p>
+            <p class="service-city">Riyadh</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+    
+    <div class="service-card">
+        <img src="images/soduah.jpg" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">Soduah</p>
+            <p class="service-city">Abha</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+
+    <div class="service-card">
+        <img src="images/theline.jfif" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">The Line</p>
+            <p class="service-city">Neom</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+    
+    <div class="service-card">
+        <img src="images/greenriyadh.png" alt="Service Image" class="service-image">
+        <div class="card-body">
+            <p class="service-name">Green Riyadh</p>
+            <p class="service-city">Riyadh</p>
+            <p class="service-price">$$$</p>
+            <p class="service-date">00/00/00 00:00</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="action-buttons-container">
+    <a href="addNewServer.html" class="action-button">Add a new service</a>
+    <a href="manage staff member.html" class="action-button">Manage staff members</a>
+</div>
+
+</body>
+
+<footer>
+
+  <p>© 2025 Next Saudi. All Rights Reserved.</p>
+
+  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
+  <p class="arabic-touch"> نعيش بحلم .. نصنع المستقبل</p>
+
+</footer>
+</html>
