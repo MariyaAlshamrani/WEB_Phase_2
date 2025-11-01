@@ -1502,7 +1502,6 @@ VOLUNTEERING PAGE
 }
 /* ===== Dashboard / Customer Pages (extra styles) ===== */
 
-/* شريط علوي بسيط للداشبورد غير عن الهيدر الرئيسي */
 .header-bar {
   background: linear-gradient(90deg, #150046, #320065);
   color: #fff;
@@ -1514,19 +1513,16 @@ VOLUNTEERING PAGE
   box-shadow: 0 0 10px rgba(169, 138, 255, 0.3);
 }
 
-/* اللوقو داخل شريط الداشبورد فقط (عشان ما يكبر لوقو الهوم) */
 .header-bar .logo {
   width: 60px;
   height: auto;
 }
 
-/* نص العنوان داخل الداشبورد */
 .header-bar .icons {
   font-size: 14px;
   color: #a5ffb3;
 }
 
-/* عنوان الصفحة تحت الهيدر */
 .site-title {
   background: rgba(25, 0, 60, 0.6);
   padding: 20px 24px;
@@ -1541,20 +1537,18 @@ VOLUNTEERING PAGE
   background: transparent;
 }
 
-/* نفس الكونتينر حقك */
+
 .container {
   max-width: 1000px;
   margin: 24px auto;
   padding: 0 12px;
 }
 
-/* تخطيط الداشبورد: يسار طلبات، يمين إشعارات */
 .dashboard-grid {
   display: flex;
   gap: 24px;
 }
 
-/* كرت عام للداشبورد (غير عن service-card حق المجموعة) */
 .card {
   border: 1px solid #5e4b9a;
   padding: 18px;
@@ -1578,7 +1572,6 @@ VOLUNTEERING PAGE
   font-size: 0.95em;
 }
 
-/* قائمة الطلبات السابقة */
 .requests {
   flex: 2;
 }
@@ -1601,12 +1594,11 @@ VOLUNTEERING PAGE
   font-weight: 600;
   color: #a5ffb3;
 }
-/* حالات ملوّنة */
+
 .status.APPROVED { color:#a5ffb3; text-shadow: 0 0 6px #57e67b; }
 .status.PENDING  { color:#ffd86e; text-shadow: 0 0 6px #e6b857; }
 .status.DECLINED { color:#ff6b6b; text-shadow: 0 0 8px #ff3c3c; }
 
-/* عمود اليمين في الداشبورد */
 .sidebar {
   flex: 1;
   display: flex;
@@ -1622,7 +1614,6 @@ VOLUNTEERING PAGE
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* أزرار الداشبورد */
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -1647,7 +1638,6 @@ VOLUNTEERING PAGE
   background: linear-gradient(90deg,#00bcd4,#9b6fff);
 }
 
-/* فورم طلب خدمة / تقييم */
 .form-grid {
   display: flex;
   gap: 24px;
@@ -1687,7 +1677,7 @@ select:focus {
   margin-top: 12px;
 }
 
-/* نجوم التقييم */
+
 .rating {
   display: inline-flex;
   direction: rtl;
@@ -1707,7 +1697,7 @@ select:focus {
   color: gold;
 }
 
-/* فوتر خاص لو صفحة الداشبورد ما استخدمت فوتر المجموعة */
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -1727,10 +1717,11 @@ select:focus {
   color: #aaa;
 }
 
-/* نفس الريسبونسيف تبعك */
+
 @media (max-width:880px) {
   .dashboard-grid,
   .form-grid {
     flex-direction: column;
   }
 }
+
