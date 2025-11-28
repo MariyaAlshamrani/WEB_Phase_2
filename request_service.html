@@ -15,7 +15,7 @@
   </div>
 </header>
 
-<!-- NAVBAR -->
+
 <nav class="navbar">
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -85,7 +85,6 @@
     </form>
   </div>
 
-  <!-- مكان عرض الطلبات -->
   <h3 style="margin-top:30px;">Added Requests:</h3>
   <div id="requestsList"></div>
 
@@ -97,7 +96,7 @@
   <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
 </footer>
 
-<!-- ========== JAVASCRIPT (Simple + Clear) ========== -->
+<!--  JS-->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -105,23 +104,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const requestsList = document.getElementById("requestsList");
 
     form.addEventListener("submit", function(e) {
-        e.preventDefault(); // منع إعادة تحميل الصفحة أثناء الإرسال
+        e.preventDefault(); // منع إعادة تحميل الصفحة وقت الإرسال
 
-        // Values
+      
         const name = form.name.value.trim();
         const service = form.service.value;
         const dueDate = form.due.value;
         const desc = form.desc.value.trim();
 
-        // ----------- VALIDATION -----------
+  
 
-        // 1) Service validation
         if (service === "select your service") {
             alert("Please select a service.");
             return;
         }
 
-        // 2) Full name validation
         const nameRegex = /^[A-Za-z ]+$/;
         if (!nameRegex.test(name) || name.split(" ").length < 2) {
             alert("Please enter a valid full name (no numbers or symbols).");
@@ -139,13 +136,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // 4) Description length
         if (desc.length < 100) {
             alert("Description must be at least 100 characters.");
             return;
         }
 
-        // ----------- CONFIRMATION -----------
 
         const confirmStay = confirm(
             "Your request was sent!\nDo you want to stay on this page?"
@@ -156,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // ----------- DISPLAY THE REQUEST -----------
 
         const card = document.createElement("div");
         card.classList.add("request-card");
@@ -176,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         requestsList.appendChild(card);
 
-        // Clear form for next request
+        
         form.reset();
     });
 
