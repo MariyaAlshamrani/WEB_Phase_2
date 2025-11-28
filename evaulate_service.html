@@ -4,104 +4,146 @@
   <meta charset="utf-8" />
   <title>Service Evaluation</title>
   <link rel="stylesheet" href="Style.css">
+
+  <style>
+    /* بسيط لتحديد الخطأ باللون الأحمر */
+    .error-border {
+      border: 1px solid red !important;
+    }
+  </style>
 </head>
+
 <body>
 
 <header class="header">
 <img src="logo.png" alt="Logo" class="logo">
 <div class="title-group">
 <h1>Next Saudi - Explore the Future </h1>
-
 </div>
 </header>
 
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="FirstPage.html">About Us</a></li>
+    <li><a href="customer_dashboard.html">Customer Dashboard</a></li>
+    <li><a href="provider.html">Provider Dashboard</a></li>
+  </ul>
+</nav>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="FirstPage.html">About Us</a></li>
-      <li><a href="customer_dashboard.html">Customer Dashboard</a></li>
-      <li><a href="provider.html">Provider Dashboard</a></li>
-    </ul>
-  </nav>
+<div class="breadcrumb container">Customer Dashboard &gt; Service Evaluation</div>
 
-  
-  <div class="breadcrumb container">Customer Dashboard &gt; Service Evaluation</div>
+<main class="container">
+  <h2>WELCOME [customer name]!</h2>
 
-  <main class="container">
-    <h2>WELCOME [customer name]!</h2>
+  <div class="card" style="margin-top:18px; display:flex; justify-content:center;">
+    <form id="evalForm" style="width:700px;" action="#" method="post">
 
-    <div class="card" style="margin-top:18px; display:flex; justify-content:center;">
-      <form style="width:700px;" action="#" method="post">
-        <label>Select a past order to provide feedback:
-          <select class="input" name="past_order">
-            <option>Previous orders</option>
-            <option>Order #1</option>
-          </select>
-        </label>
+      <label>Select a past order to provide feedback:
+        <select class="input" name="past_order" id="past_order">
+          <option value="">Previous orders</option>
+          <option value="Order1">Order #1</option>
+        </select>
+      </label>
 
-        <label style="margin-top:6px;">How would you rate your overall experience?
-          <div class="rating">
-  <input type="radio" id="star5" name="rate" value="5">
-  <label for="star5">★</label>
-
-  <input type="radio" id="star4" name="rate" value="4">
-  <label for="star4">★</label>
-
-  <input type="radio" id="star3" name="rate" value="3">
-  <label for="star3">★</label>
-
-  <input type="radio" id="star2" name="rate" value="2">
-  <label for="star2">★</label>
-
-  <input type="radio" id="star1" name="rate" value="1">
-  <label for="star1">★</label>
-</div>
-
-<br>
-        <label>Did the event comment meet your expectations?
-          <div style="margin-top:6px;">
-            <label><input type="radio" name="expect" value="yes"> YES</label>
-            <label style="margin-left:12px;"><input type="radio" name="expect" value="no"> NO</label>
-          </div>
-        </label>
-
-        <label>What did you enjoy the most?
-          <textarea class="input" name="enjoy" placeholder="Description"></textarea>
-        </label>
-
-        <label>Would you recommend this event to others?
-          <div style="margin-top:6px;">
-            <label><input type="radio" name="rec" value="yes"> YES</label>
-            <label style="margin-left:12px;"><input type="radio" name="rec" value="no"> NO</label>
-          </div>
-        </label>
-
-        <label>What improvements would you suggest?
-          <textarea class="input" name="improve" placeholder="Description"></textarea>
-        </label>
-
-        <div class="form-actions">
-          <button class="btn btn-primary" type="submit">Submit</button>
+      <label style="margin-top:6px;">How would you rate your overall experience?
+        <div class="rating">
+          <input type="radio" id="star5" name="rate" value="5"><label for="star5">★</label>
+          <input type="radio" id="star4" name="rate" value="4"><label for="star4">★</label>
+          <input type="radio" id="star3" name="rate" value="3"><label for="star3">★</label>
+          <input type="radio" id="star2" name="rate" value="2"><label for="star2">★</label>
+          <input type="radio" id="star1" name="rate" value="1"><label for="star1">★</label>
         </div>
-      </form>
-    </div>
+      </label>
 
-  </main>
+      <br>
 
-  <footer class="footer">
-   
+      <label>What did you enjoy the most?
+        <textarea class="input" name="enjoy" id="enjoy" placeholder="Description"></textarea>
+      </label>
 
-  <p>©️ 2025 Next Saudi. All Rights Reserved.</p>
+      <label>What improvements would you suggest?
+        <textarea class="input" name="improve" id="improve" placeholder="Description"></textarea>
+      </label>
 
-  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
-  <p class="arabic-touch">  نعيش بحلم .. نصنع المستقبل</p>
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
 
+    </form>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>©️ 2025 Next Saudi. All Rights Reserved.</p>
+  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
+  <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
 </footer>
 
+<!-- ================= JS =================== -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
 
+    const form = document.getElementById("evalForm");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        // inputs
+        const pastOrder = document.getElementById("past_order");
+        const enjoy = document.getElementById("enjoy");
+        const improve = document.getElementById("improve");
+
+        const rating = document.querySelector("input[name='rate']:checked");
+
+        // reset error style
+        pastOrder.classList.remove("error-border");
+        enjoy.classList.remove("error-border");
+        improve.classList.remove("error-border");
+
+        let valid = true;
+
+        // 1) Check if order is selected
+        if (pastOrder.value === "") {
+            pastOrder.classList.add("error-border");
+            valid = false;
+        }
+
+        // 2) Check if rating selected
+        if (!rating) {
+            alert("Please select a rating.");
+            valid = false;
+        }
+
+        // 3) Check feedback fields
+        if (enjoy.value.trim() === "") {
+            enjoy.classList.add("error-border");
+            valid = false;
+        }
+        if (improve.value.trim() === "") {
+            improve.classList.add("error-border");
+            valid = false;
+        }
+
+        if (!valid) {
+            alert("Please fill all required fields.");
+            return;
+        }
+
+        // 4) Check rating for message
+        if (rating.value >= 4) {
+            alert("Thank you! We're glad you enjoyed the service.");
+        } else {
+            alert("We are sorry! We will work to improve our service.");
+        }
+
+        // 5) Redirect to dashboard
+        window.location.href = "customer_dashboard.html";
+    });
+
+});
+</script>
 
 </body>
 </html>
