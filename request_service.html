@@ -5,96 +5,183 @@
   <title>Request a Service</title>
   <link rel="stylesheet" href="Style.css">
 </head>
+
 <body>
 
- <header class="header">
-<img src="logo.png" alt="Logo" class="logo">
-<div class="title-group">
-<h1>Next Saudi - Explore the Future </h1>
-
-</div>
+<header class="header">
+  <img src="logo.png" alt="Logo" class="logo">
+  <div class="title-group">
+    <h1>Next Saudi - Explore the Future</h1>
+  </div>
 </header>
 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="FirstPage.html">About Us</a></li>
+    <li><a href="customer_dashboard.html">Customer Dashboard</a></li>
+    <li><a href="provider.html">Provider Dashboard</a></li>
+  </ul>
+</nav>
 
-  <!-- NAVBAR  -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="FirstPage.html">About Us</a></li>
-      <li><a href="customer_dashboard.html">Customer Dashboard</a></li>
-      <li><a href="provider.html">Provider Dashboard</a></li>
-    </ul>
-  </nav>
-  <div class="site-title">Next Saudi – Explore the Future</div>
-  <div class="breadcrumb container">Customer Dashboard &gt; Request a service</div>
+<div class="site-title">Next Saudi – Explore the Future</div>
+<div class="breadcrumb container">Customer Dashboard &gt; Request a service</div>
 
-  <main class="container">
-    <h2>WELCOME [customer name]!</h2>
+<main class="container">
+  <h2>WELCOME [customer name]!</h2>
 
-    <div class="card" style="margin-top:16px;">
-      <form action="#" method="post">
-        <div class="form-grid">
-          <div class="form-left">
-            <label>Name
-              <input class="input" type="text" name="name" placeholder="Input field">
-            </label>
+  <div class="card" style="margin-top:16px;">
+    <form id="requestForm">
+      <div class="form-grid">
 
-            <label>Email Address
-              <input class="input" type="email" name="email" placeholder="Input field">
-            </label>
+        <div class="form-left">
+          <label>Name
+            <input class="input" type="text" name="name" placeholder="Full name">
+          </label>
 
-            <label>Phone number
-              <input class="input" type="tel" name="phone" placeholder="Input field">
-            </label>
+          <label>Email Address
+            <input class="input" type="email" name="email" placeholder="Email">
+          </label>
 
-            <label>Preferred language
-              <select class="input" name="lang">
-                <option>select your language</option>
-                <option>Arabic</option>
-                <option>English</option>
-              </select>
-            </label>
-          </div>
+          <label>Phone number
+            <input class="input" type="tel" name="phone" placeholder="Phone">
+          </label>
 
-          <div class="form-right">
-            <label>Service
-              <select class="input" name="service">
-                <option>select your service</option>
-                <option>Voulnteer</option>
-                <option>Intrest Test</option>
-                 <option>Customer Service</option>
-              </select>
-            </label>
-
-            <label>Due date
-              <input class="input" type="date" name="due">
-            </label>
-
-            <label>Description
-              <textarea name="desc" placeholder="Description"></textarea>
-            </label>
-          </div>
+          <label>Preferred language
+            <select class="input" name="lang">
+              <option>select your language</option>
+              <option>Arabic</option>
+              <option>English</option>
+            </select>
+          </label>
         </div>
 
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary">Request</button>
+        <div class="form-right">
+          <label>Service
+            <select class="input" name="service">
+              <option>select your service</option>
+              <option>Volunteer</option>
+              <option>Interest Test</option>
+              <option>Customer Service</option>
+            </select>
+          </label>
+
+          <label>Due date
+            <input class="input" type="date" name="due">
+          </label>
+
+          <label>Description
+            <textarea name="desc" placeholder="Write at least 100 characters..."></textarea>
+          </label>
         </div>
-      </form>
-    </div>
 
-  </main>
+      </div>
 
-  <footer class="footer">
-   
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Request</button>
+      </div>
+    </form>
+  </div>
 
-  <p>©️ 2025 Next Saudi. All Rights Reserved.</p>
+  <!-- مكان عرض الطلبات -->
+  <h3 style="margin-top:30px;">Added Requests:</h3>
+  <div id="requestsList"></div>
 
-  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
-  <p class="arabic-touch">  نعيش بحلم .. نصنع المستقبل</p>
+</main>
 
+<footer class="footer">
+  <p>©️ 2025 Next Saudi. All Rights Reserved.</p>
+  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
+  <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
 </footer>
 
+<!-- ========== JAVASCRIPT (Simple + Clear) ========== -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("requestForm");
+    const requestsList = document.getElementById("requestsList");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault(); // منع إعادة تحميل الصفحة أثناء الإرسال
+
+        // Values
+        const name = form.name.value.trim();
+        const service = form.service.value;
+        const dueDate = form.due.value;
+        const desc = form.desc.value.trim();
+
+        // ----------- VALIDATION -----------
+
+        // 1) Service validation
+        if (service === "select your service") {
+            alert("Please select a service.");
+            return;
+        }
+
+        // 2) Full name validation
+        const nameRegex = /^[A-Za-z ]+$/;
+        if (!nameRegex.test(name) || name.split(" ").length < 2) {
+            alert("Please enter a valid full name (no numbers or symbols).");
+            return;
+        }
+
+        // 3) Due date must be after 2 weeks
+        const today = new Date();
+        const due = new Date(dueDate);
+        const minDate = new Date();
+        minDate.setDate(today.getDate() + 14);
+
+        if (!dueDate || due < minDate) {
+            alert("Due date must be at least two weeks from today.");
+            return;
+        }
+
+        // 4) Description length
+        if (desc.length < 100) {
+            alert("Description must be at least 100 characters.");
+            return;
+        }
+
+        // ----------- CONFIRMATION -----------
+
+        const confirmStay = confirm(
+            "Your request was sent!\nDo you want to stay on this page?"
+        );
+
+        if (!confirmStay) {
+            window.location.href = "customer_dashboard.html";
+            return;
+        }
+
+        // ----------- DISPLAY THE REQUEST -----------
+
+        const card = document.createElement("div");
+        card.classList.add("request-card");
+        card.style.border = "1px solid #ccc";
+        card.style.padding = "15px";
+        card.style.marginTop = "12px";
+        card.style.borderRadius = "8px";
+        card.style.backgroundColor = "#f9f9f9";
+
+        card.innerHTML = `
+          <h4>Request Summary</h4>
+          <p><strong>Service:</strong> ${service}</p>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Due Date:</strong> ${dueDate}</p>
+          <p><strong>Description:</strong> ${desc}</p>
+        `;
+
+        requestsList.appendChild(card);
+
+        // Clear form for next request
+        form.reset();
+    });
+
+});
+</script>
 
 </body>
 </html>
