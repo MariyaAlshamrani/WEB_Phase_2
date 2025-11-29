@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Next Saudi – Volunteering</title>
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
     <div class="logo-section">
       <img src="logo.png" alt="Next Saudi Logo" class="logo">
@@ -17,22 +16,18 @@
     </div>
   </header>
 
-  <!-- Navigation -->
   <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html" class="active">Services</a></li>
-          <li>  <a href="FirstPage.html">About Us</a> </li>
-       <li> <a href="provider.html">Provider Dashboard</a> </li>
-       <li> <a href="cutomer_dashboard.html">Customer Dashboard</a></li>
-        </ul>
-    </nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="FirstPage.html">About Us</a></li>
+      <li><a href="provider.html">Provider Dashboard</a></li>
+      <li><a href="cutomer_dashboard.html">Customer Dashboard</a></li>
+    </ul>
+  </nav>
 
-  <!-- Breadcrumb -->
   <p class="breadcrumb">Home > Services > Volunteering</p>
 
-
-  <!-- Volunteering Section -->
   <section class="volunteering">
     <div class="intro">
       <h2>Volunteering Opportunities</h2>
@@ -44,23 +39,22 @@
       <h3>Application Form</h3>
 
       <form class="volunteer-form">
-        <div class="form-grid">
 
+        <div class="form-grid">
           <div class="form-left">
             <label>Name:</label>
-            <input type="text" placeholder="Your name">
+            <input type="text" class="v-name" placeholder="Your name" required>
 
             <label>Age:</label>
-            <input type="number" placeholder="Your age">
+            <input type="number" class="v-age" placeholder="Your age" required>
 
             <label>City:</label>
-            <select>
+            <select class="v-city">
               <option>Riyadh</option>
               <option>Jeddah</option>
               <option>Dammam</option>
-             <option>Mecca</option>
               <option>Medina</option>
-               <option>Taif</option>
+              <option>Taif</option>
                 <option>Yanbu</option>
                  <option>Al Ula</option>
                   <option>Abha</option>
@@ -69,52 +63,51 @@
             </select>
 
             <label>Skills/Experience:</label>
-            <input type="text" placeholder="Describe your skills">
+            <input type="text" class="v-skill" placeholder="Describe your skills">
           </div>
 
           <div class="form-right">
             <label>Email:</label>
-            <input type="email" placeholder="example@mail.com">
+            <input type="email" class="v-email" placeholder="example@mail.com" required>
 
-            <label>Preferred Volunteering Type:</label>
+            <label>Preferred Type:</label>
             <div class="options">
-              <label><input type="radio" name="type"> Event</label>
-              <label><input type="radio" name="type"> Community</label>
-              <label><input type="radio" name="type"> Environmental</label>
+              <label><input type="radio" name="type" value="Event"> Event</label>
+              <label><input type="radio" name="type" value="Community"> Community</label>
+              <label><input type="radio" name="type" value="Environmental"> Environmental</label>
             </div>
 
             <label>Available Time:</label>
             <div class="options">
-              <label><input type="radio" name="time"> Morning</label>
-              <label><input type="radio" name="time"> Afternoon</label>
-              <label><input type="radio" name="time"> Evening</label>
+              <label><input type="radio" name="time" value="Morning"> Morning</label>
+              <label><input type="radio" name="time" value="Afternoon"> Afternoon</label>
+              <label><input type="radio" name="time" value="Evening"> Evening</label>
             </div>
 
             <label>Availability:</label>
             <div class="options">
-              <label><input type="radio" name="availability"> Weekdays</label>
-              <label><input type="radio" name="availability"> Weekends</label>
+              <label><input type="radio" name="availability" value="Weekdays"> Weekdays</label>
+              <label><input type="radio" name="availability" value="Weekends"> Weekends</label>
             </div>
           </div>
-
         </div>
 
         <button type="submit" class="btn">Submit Application</button>
       </form>
     </div>
-
-    <div class="thankyou-box">
-      <p>Thank you for Applying!</p>
-      <p>Our team will contact you soon.</p>
-    </div>
   </section>
 
-  <!-- Footer -->
+  <!-- SUCCESS POPUP -->
+  <div class="popup volunteer-popup" id="volunteerSuccess">
+    <p>Thank you for applying! 💜<br>Our team will contact you soon.</p>
+  </div>
+
   <footer>
     <p>© 2025 Next Saudi. All Rights Reserved.</p>
     <p>Contact: info@nextsaudi.com | +966 555 2030</p>
     <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
