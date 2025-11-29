@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Next Saudi – Interests Test</title>
-  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -12,25 +12,24 @@
     <div class="logo-section">
       <img src="logo.png" alt="Next Saudi Logo" class="logo">
       <div class="title-group">
-       <h1>Next Saudi – Explore the Future</h1>
+        <h1>Next Saudi – Explore the Future</h1>
       </div>
     </div>
   </header>
 
   <!-- Navigation -->
   <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html" class="active">Services</a></li>
-          <li>  <a href="FirstPage.html">About Us</a> </li>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+       <li>  <a href="FirstPage.html">About Us</a> </li>
        <li> <a href="provider.html">Provider Dashboard</a> </li>
        <li> <a href="customer_dashboard.html">Customer Dashboard</a></li>
-        </ul>
-    </nav>
+    </ul>
+  </nav>
 
   <!-- Breadcrumb -->
-  <p class="breadcrumb">Home > Services > Interset Test</p>
-
+  <p class="breadcrumb">Home > Services > Interest Test</p>
 
   <!-- Interests Test Section -->
   <section class="interest-test">
@@ -44,75 +43,90 @@
       <p><b>Price:</b> 5 SAR</p>
 
       <form class="interest-form">
+
+        <!-- Age + City -->
         <div class="form-group">
           <label>Age:</label>
-          <input type="number" placeholder="Enter your age">
+<select class="age-select" required>
+  <option value="">Select Age Range</option>
+  <option value="15">15 - 20</option>
+  <option value="25">21 - 30</option>
+  <option value="35">31 - 40</option>
+  <option value="45">41 - 50</option>
+  <option value="55">51 - 60</option>
+</select>
 
           <label>City:</label>
-          <select>
-            <option>Riyadh</option>
-            <option>Jeddah</option>
-            <option>Dammam</option>
-             <option>Mecca</option>
-              <option>Medina</option>
-               <option>Taif</option>
-                <option>Yanbu</option>
-                 <option>Al Ula</option>
-                  <option>Abha</option>
-                   <option>Tabuk</option>
-                    <option>Qassim</option>
+          <select class="city-select">
+            <option value="Riyadh">Riyadh</option>
+            <option value="Jeddah">Jeddah</option>
+            <option value="Dammam">Dammam</option>
+            <option value="Mecca">Mecca</option>
+            <option value="Medina">Medina</option>
+            <option value="Taif">Taif</option>
+            <option value="Yanbu">Yanbu</option>
+            <option value="Al Ula">Al Ula</option>
+            <option value="Abha">Abha</option>
+            <option value="Tabuk">Tabuk</option>
+            <option value="Qassim">Qassim</option>
           </select>
         </div>
 
+        <!-- Indoor / Outdoor -->
         <div class="form-group">
           <label>Indoor or Outdoor?</label>
           <div class="options">
-            <label><input type="radio" name="place"> Indoor</label>
-            <label><input type="radio" name="place"> Outdoor</label>
+            <label><input type="radio" name="place" value="Indoor"> Indoor</label>
+            <label><input type="radio" name="place" value="Outdoor"> Outdoor</label>
           </div>
         </div>
 
+        <!-- Activity Type -->
         <div class="form-group">
-          <label>Favorite Activity Type (optional):</label>
+          <label>Favorite Activity Type:</label>
           <div class="options">
-            <label><input type="radio" name="type"> Entertainment</label>
-            <label><input type="radio" name="type"> Cultural</label>
-            <label><input type="radio" name="type"> Sports</label>
+            <label><input type="radio" name="type" value="Entertainment"> Entertainment</label>
+            <label><input type="radio" name="type" value="Cultural"> Cultural</label>
+            <label><input type="radio" name="type" value="Sports"> Sports</label>
           </div>
         </div>
 
+        <!-- Activity Level -->
         <div class="form-group">
-          <label>Activity Level (optional):</label>
+          <label>Activity Level:</label>
           <div class="options">
-            <label><input type="radio" name="level"> Adventurous</label>
-            <label><input type="radio" name="level"> Moderate</label>
-            <label><input type="radio" name="level"> Light</label>
+            <label><input type="radio" name="level" value="Adventurous"> Adventurous</label>
+            <label><input type="radio" name="level" value="Moderate"> Moderate</label>
+            <label><input type="radio" name="level" value="Light"> Light</label>
           </div>
         </div>
 
+        <!-- Preferred Time -->
         <div class="form-group">
           <label>Preferred Time:</label>
-          <select>
-            <option>Morning</option>
-            <option>Afternoon</option>
-            <option>Evening</option>
+          <select class="time-select">
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
           </select>
         </div>
 
+        <!-- Group / Solo -->
         <div class="form-group">
           <label>Group or Solo?</label>
           <div class="options">
-            <label><input type="radio" name="group"> Group</label>
-            <label><input type="radio" name="group"> Solo</label>
+            <label><input type="radio" name="group" value="Group"> Group</label>
+            <label><input type="radio" name="group" value="Solo"> Solo</label>
           </div>
         </div>
 
+        <!-- Budget -->
         <div class="form-group">
           <label>Budget Level:</label>
-          <select>
-            <option>Low(100-300)</option>
-            <option>Medium(300-600)</option>
-            <option>High(600-1000)</option>
+          <select class="budget-select">
+            <option value="Low (100-300)">Low (100-300)</option>
+            <option value="Medium (300-600)">Medium (300-600)</option>
+            <option value="High (600-1000)">High (600-1000)</option>
           </select>
         </div>
 
@@ -120,10 +134,12 @@
       </form>
     </div>
 
+    <!-- Results -->
     <div class="result-box">
-      <p>After submitting, your recommended activities will appear here:</p>
-      <div class="recommendation">Hiking in Riyadh</div>
+      <p>Your recommended activity:</p>
+      <div class="recommendation">......</div>
     </div>
+
   </section>
 
   <!-- Footer -->
@@ -132,6 +148,9 @@
     <p>Contact: info@nextsaudi.com | +966 555 2030</p>
     <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
   </footer>
+
+  <!-- JS File -->
+  <script src="script.js"></script>
 
 </body>
 </html>
