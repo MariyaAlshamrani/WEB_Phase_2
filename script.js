@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===========================================================
-       1) REQUEST A SERVICE — requestForm
-    =========================================================== */
+    /* 
+        REQUEST A SERVICE 
+   */
     const requestForm = document.getElementById("requestForm");
 
     if (requestForm) {
@@ -75,9 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* ===========================================================
-       2) SERVICE EVALUATION — evalForm
-    =========================================================== */
+    /* 
+        SERVICE EVALUATION — evalForm
+     */
     const evalForm = document.getElementById("evalForm");
 
     if (evalForm) {
@@ -134,9 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* ===========================================================
+    /* 
        3) PROFILE FORM — profileForm
-    =========================================================== */
+  */
     const profileForm = document.getElementById("profileForm");
 
     if (profileForm) {
@@ -209,9 +209,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* ===========================================================
+    /* 
        4) SERVICES SORTING — .services-grid
-    =========================================================== */
+    */
     const sortSelect = document.getElementById("sort");
     const servicesGrid = document.querySelector(".services-grid");
 
@@ -258,9 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* ===========================================================
-       5) INTEREST TEST — .interest-form
-    =========================================================== */
+    /* 
+      INTEREST TEST — 
+    */
     const interestForm = document.querySelector(".interest-form");
     const output = document.querySelector(".recommendation");
 
@@ -349,9 +349,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* ===========================================================
+    /* 
        6) CUSTOMER SUPPORT FORM — supportForm
-    =========================================================== */
+ */
     const supportForm = document.querySelector(".support-form");
 
     if (supportForm) {
@@ -378,9 +378,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* ===========================================================
+    /* 
        7) VOLUNTEER FORM — vForm
-    =========================================================== */
+     */
     const vForm = document.querySelector(".volunteer-form");
 
     if (vForm) {
@@ -411,9 +411,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    /* ===========================================================
-       8) CHARACTER COUNTER — #message
-    =========================================================== */
+    /* 
+       CHARACTER COUNTER — #message
+    */
     const msg = document.getElementById("message");
     const counter = document.getElementById("charCount");
 
@@ -426,3 +426,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
