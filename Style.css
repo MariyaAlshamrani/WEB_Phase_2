@@ -499,46 +499,33 @@ SERVICES PAGE
 
 
 
+/* ----- SERVICES PAGE: sort bar ----- */
 .sort-section {
-
-  text-align: center;
-
-  margin: 25px 0;
-
+  margin-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;   
+  align-items: center;
+  gap: 12px;                
 }
-
-
 
 .sort-section label {
-
   color: #fff;
-
   font-weight: 500;
-
-  margin-right: 10px;
-
 }
-
 
 
 .sort-section select {
-
-  background: rgba(255, 255, 255, 0.1);
-
-  color: #fff;
-
-  border: 1px solid #a98aff;
-
-  padding: 8px 14px;
-
+  width: 170px;
+  padding: 10px 12px;
   border-radius: 20px;
-
-  font-size: 0.95em;
-
+  background: rgba(255,255,255,0.1);
+  border: 1px solid #a98aff;
+  color: #fff;
+  font-size: 0.9em;
   cursor: pointer;
-
-  transition: 0.3s;
-
+  position: relative;
+  top: 3px;
 }
 
 
@@ -564,8 +551,8 @@ SERVICES PAGE
 .services h2 {
 
   color: #a98aff;
-
-  margin-bottom: 40px;
+margin-top: 0;
+  margin-bottom: 30px;
 
 }
 
@@ -893,7 +880,11 @@ Customer Support PAGE
 
 }
 
-
+.support-popup {
+  top: 20px;
+  background: rgba(169, 138, 255, 0.95);
+  box-shadow: 0 0 20px rgba(169,138,255,0.4);
+}
 
 /* ---------------------------------------------------
 
@@ -1300,25 +1291,36 @@ VOLUNTEERING PAGE
 }
 
 
+.volunteer-popup {
+  top: 20px;
+  background: rgba(169, 138, 255, 0.95);
+  box-shadow: 0 0 20px rgba(169,138,255,0.4);
+}
 
-.thankyou-box {
-
-  margin-top: 30px;
-
-  background: rgba(255,255,255,0.05);
-
+.popup {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  padding: 15px 25px;
   border-radius: 12px;
-
-  padding: 25px;
-
-  box-shadow: 0 0 15px rgba(155,111,255,0.2);
-
-  color: #a98aff;
-
-  font-weight: bold;
-
+  color: white;
+  opacity: 0;
+  transition: 0.3s ease;
+  z-index: 9999;
+  pointer-events: none;
   text-align: center;
-
+  font-weight: 600;
+}
+.popup.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.match-note {
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: #a98aff;
+  opacity: 0.9;
 }
 
 
@@ -1739,6 +1741,7 @@ select:focus {
   border-radius: 0;       /* بدون زوايا ناعمة لأنها بانر */
   display: block;
 }
+
 
 
 
