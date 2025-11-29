@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Next Saudi – Services</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -37,19 +37,22 @@
         </div>
     </section>
 
-    <!-- Sort Dropdown -->
-    <div class="sort-section">
-        <label for="sort">Sort by:</label>
-        <select id="sort">
-            <option value="default">Select Option</option>
-            <option value="price">Price</option>
-            <option value="name">Name</option>
-        </select>
-    </div>
-
-    <!-- Services Section -->
+    <!-- Services -->
     <section class="services">
+
         <h2>Our Services</h2>
+
+        <!-- Sort Section (المكان الصحيح) -->
+        <div class="sort-section">
+            <label for="sort">Sort by:</label>
+            <select id="sort">
+                <option value="default">Select Option</option>
+                <option value="price-asc">Price (Low → High)</option>
+                <option value="price-desc">Price (High → Low)</option>
+                <option value="name">Name (A → Z)</option>
+            </select>
+        </div>
+
         <div class="services-grid">
 
             <div class="service-card">
@@ -78,6 +81,7 @@
             </div>
 
         </div>
+
     </section>
 
     <!-- Footer -->
@@ -86,6 +90,9 @@
         <p>Contact: info@nextsaudi.com | +966 555 2030</p>
         <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 
 </body>
 </html>
