@@ -110,7 +110,7 @@
             margin-top: 10px;
         }
 
-        /* Tablet */
+
         @media screen and (min-width: 768px) {
             fieldset {
                 padding: 30px;
@@ -130,7 +130,7 @@
             }
         }
 
-        /* Desktop */
+    
         @media screen and (min-width: 1024px) {
             fieldset {
                 width: 70%;
@@ -138,7 +138,7 @@
             }
         }
 
-        /* Mobile Small */
+      
         @media screen and (max-width: 480px) {
             fieldset {
                 width: 95%;
@@ -239,9 +239,7 @@
 
 <script src="script.js"></script>
 
-<!-- Load Theme from localStorage -->
 <script>
-// تطبيق الثيم المحفوظ تلقائياً عند تحميل الصفحة
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'light') {
     document.body.classList.add('light-theme');
@@ -256,3 +254,4 @@ if (savedTheme === 'light') {
   <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
 </footer>
 </html>
+
