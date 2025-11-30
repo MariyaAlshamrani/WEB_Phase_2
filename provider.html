@@ -1,220 +1,161 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Provider</title>
+    <title>Service Information Form</title>
 	<link rel="stylesheet" href="Style.css">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .content-wrapper {
-            flex: 1;
-            padding: 20px 10px;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 1.8em;
-        }
-
-        .services-list-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            width: 95%;
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            min-height: 150px;
-            border: 2px dashed rgba(169, 138, 255, 0.3);
+        fieldset {
+            width: 70%;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.08); 
+            border: 1px solid rgba(169, 138, 255, 0.5);
             border-radius: 12px;
-            padding: 20px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(155, 111, 255, 0.3);
         }
 
-        .service-card {
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid #282828;
-            border-radius: 8px;
-            transition: transform 0.3s;
+        legend h2 {
+            color: #a98aff;
+            font-size: 1.8em;
+            font-weight: 600;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(169, 138, 255, 0.3);
+        .input-group {
+            margin-bottom: 20px;
         }
 
-        .card-header {
-            position: relative;
-            margin-bottom: 10px;
-        }
-
-        .service-image {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
+        .input-group label {
             display: block;
-            background-color: #eaeaea;
-            border-radius: 5px;
+            color: #ddd;
+            font-weight: 400;
+            margin-bottom: 5px;
         }
 
-        .edit-icon {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            font-size: 20px;
-            text-decoration: none;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 5px 8px;
-            border-radius: 5px;
-            z-index: 10;
-            line-height: 1;
-            color: white;
-        }
-
-        .card-body p {
-            margin: 5px 0;
-            font-size: 14px;
-            text-align: left;
-            color: #ccc;
-        }
-
-        .service-name {
-            font-weight: bold;
-            font-size: 16px;
+        .input-group input, .input-group select, .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #786e96;
             color: #fff;
+            border-radius: 8px;
+            font-size: 1em;
         }
 
-        .action-buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 95%;
-            max-width: 1200px;
-            margin: 0 auto 30px;
+        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: #a98aff;
+			background-color: gray;
         }
 
-        .action-button {
+        ::placeholder {
+            color: #aaa;
+            opacity: 1;
+        }
+
+        .input-group input[type="file"] {
+            display: none;
+        }
+
+        .upload-btn, button[type="submit"] {
             background: linear-gradient(90deg, #9b6fff, #00bcd4);
             border: none;
             color: white;
-            padding: 14px 24px;
+            padding: 10px 20px;
             border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
-            transition: 0.3s;
             text-align: center;
             display: inline-block;
-            text-decoration: none;
-            font-size: 1rem;
         }
 
-        .action-button:hover {
+        .upload-btn:hover, button[type="submit"]:hover {
             transform: scale(1.03);
-            box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+            box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
         }
 
-        /* Tablet */
-        @media screen and (min-width: 600px) {
-            .action-buttons-container {
-                flex-direction: row;
-                justify-content: flex-start;
-            }
-
-            .action-button {
-                flex: 0 1 auto;
-            }
-        }
-
-        /* Desktop */
-        @media screen and (min-width: 1024px) {
-            .services-list-container {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            }
-
-            .service-image {
-                height: 180px;
-            }
-        }
-
-        /* Mobile Small */
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 1.4em;
-            }
-
-            .services-list-container {
-                grid-template-columns: 1fr;
-                padding: 15px;
-            }
-
-            .service-card {
-                padding: 12px;
-            }
-
-            .service-image {
-                height: 120px;
-            }
-
-            .action-button {
-                padding: 12px 20px;
-                font-size: 0.95rem;
-            }
+        .image-preview {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 2px dashed #a98aff;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a98aff;
+            font-size: 1.1em;
         }
     </style>
 </head>
-
-<body>
-
-<div class="content-wrapper">
 
 <header class="header">
     <div class="logo-section">
         <img class="logo" src="logo.png" alt="logo">
     </div>
-    <h1>Next Saudi - Explore the Future</h1>
+  <h1>Next Saudi – Explore the Future</h1>
 </header>
 
 <nav class="navbar">
-	<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="services.html">Services</a></li>
-		<li><a href="FirstPage.html">About Us</a></li>
-		<li><a href="provider.html" class="active">Provider Dashboard</a></li>
-		<li><a href="customer_dashboard.html">Customer Dashboard</a></li>
-	</ul>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="FirstPage.html">About Us</a></li>
+        <li><a href="provider.html" class="active">Provider Dashboard</a></li>
+        <li><a href="customer_dashboard.html">Customer Dashboard</a></li>
+    </ul>
 </nav>
 
-<h1>Projects List</h1>
+<p class="breadcrumb">Home>Provider Dashboard>Add new serves</p>
 
-<div class="services-list-container">
-</div>
+<body>
+<form action="provider.html" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <legend><h2>project Information:</h2></legend>
 
-<div class="action-buttons-container">
-    <a href="addNewServer.html" class="action-button">Add a new project</a>
-    <a href="manage staff member.html" class="action-button">Manage staff members</a>
-</div>
+        <div class="input-group">
+            <label for="service-photo">Add service Photo:</label>
+            <label for="service-photo" class="upload-btn">Choose Image</label>
+            <input type="file" id="service-photo" name="service-photo">
+            <div class="image-preview">
+                Click "Choose Image" to upload a photo
+            </div>
+        </div>
 
-</div>
+        <div class="input-group">
+            <label for="service-name">Name:</label>
+            <input type="text" id="service-name" name="service-name" placeholder="Enter service name">
+        </div>
 
-<footer>
-  <p>© 2025 Next Saudi. All Rights Reserved.</p>
-  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
-  <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
-</footer>
+        <div class="input-group">
+            <label for="city-select">City:</label>
+            <select id="city-select" name="city">
+                <option value="" disabled selected>Select a city</option>
+                <option value="radio">Riyadh</option>
+                <option value="radio">Alula</option>
+                <option value="radio">Jeddah</option>
+                <option value="radio">Neom</option>
+                <option value="radio">Abha</option>
+                <option value="radio">Jubail</option>
+                <option value="radio">Dammam</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="service-price">Price:</label>
+            <input type="text" id="service-price" name="price" placeholder="Enter price">
+        </div>
+
+        <div class="input-group">
+            <label for="service-description">Description:</label>
+            <textarea id="service-description" name="description" placeholder="Enter service description"></textarea>
+        </div>
+
+        <button type="submit">Add</button>
+    </fieldset>
+</form>
 
 <script src="script.js"></script>
 
@@ -226,4 +167,10 @@ if (savedTheme === 'light') {
 </script>
 
 </body>
+	
+<footer>
+  <p>© 2025 Next Saudi. All Rights Reserved.</p>
+  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
+  <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
+</footer>
 </html>
