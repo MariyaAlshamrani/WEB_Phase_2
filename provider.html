@@ -127,6 +127,26 @@
             box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
         }
 
+        /* Empty State */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #a98aff;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #a98aff;
+        }
+
+        .empty-state p {
+            font-size: 1.1em;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
         /* Tablet */
         @media screen and (min-width: 600px) {
             .action-buttons-container {
@@ -201,6 +221,10 @@
 <h1>Projects List</h1>
 
 <div class="services-list-container">
+    <div class="empty-state">
+        <h3>No projects available</h3>
+        <p>Add a new project to display it here</p>
+    </div>
 </div>
 
 <div class="action-buttons-container">
@@ -212,18 +236,10 @@
 
 <footer>
   <p>© 2025 Next Saudi. All Rights Reserved.</p>
-  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
+  <p>Contact: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e777078715e707b666a6d7f6b7a77307d7173">[email&#160;protected]</a> | +966 555 2030</p>
   <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
 </footer>
 
-<script src="script.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 
 <script>
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'light') {
-    document.body.classList.add('light-theme');
-}
-</script>
-
-</body>
-</html>
