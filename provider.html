@@ -1,106 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="provider-page">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Service Provider </title>
 	<link rel="stylesheet" href="Style.css">
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .content-wrapper {
-            flex: 1;
-        }
-
-        .services-list-container {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            overflow-x: auto;
-            padding-bottom: 10px;
-            width: 100%;
-            margin-bottom: 20px;
-            min-height: 150px;
-            border: 2px dashed rgba(169, 138, 255, 0.3);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .service-card {
-            padding: 10px;
-            width: 200px;
-            flex-shrink: 0;
-        }
-
-        .card-header {
-            position: relative;
-            margin-bottom: 10px;
-        }
-
-        .service-image {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            display: block;
-            background-color: #eaeaea;
-            margin-bottom: 10px;
-        }
-
-        .edit-icon {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            font-size: 18px;
-            text-decoration: none;
-            padding: 3px 6px;
-            z-index: 10;
-            line-height: 1;
-        }
-
-        .card-body p {
-            margin: 3px 0;
-            font-size: 14px;
-            text-align: left;
-        }
-
-        .service-name {
-            font-weight: bold;
-        }
-
-        .action-buttons-container {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            margin-bottom: 30px;
-            justify-content: flex-start;
-        }
-
-        .action-button {
-            background: linear-gradient(90deg, #9b6fff, #00bcd4);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            text-align: center;
-            display: inline-block;
-            margin-top: 10px;
-            text-decoration: none;
-        }
-    </style>
 </head>
 
-<body>
+<body class="provider-page">
 
 <div class="content-wrapper">
 
@@ -123,13 +30,13 @@
 
 <h1>Projects List</h1>
 
-<div class="services-list-container">
-  
+<div class="provider-services-container">
+    <!-- المشاريع الجديدة راح تظهر هنا تلقائياً -->
 </div>
 
-<div class="action-buttons-container">
-    <a href="addNewServer.html" class="action-button">Add a new project</a>
-    <a href="manage staff member.html" class="action-button">Manage staff members</a>
+<div class="provider-action-buttons">
+    <a href="addNewServer.html" class="provider-action-btn">Add a new project</a>
+    <a href="manage staff member.html" class="provider-action-btn">Manage staff members</a>
 </div>
 
 </div>
