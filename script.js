@@ -427,3 +427,277 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+/* ==========================
+THEME SWITCHER (Home page buttons)
+========================== */
+const body = document.body;
+const darkBtn = document.getElementById("darkBtn");
+const lightBtn = document.getElementById("lightBtn");
+
+// default: dark theme
+if (darkBtn && lightBtn) {
+darkBtn.onclick = () => {
+body.classList.remove("light-theme");
+localStorage.setItem("theme", "dark");
+};
+lightBtn.onclick = () => {
+body.classList.add("light-theme");
+localStorage.setItem("theme", "light");
+};
+}
+
+// load saved theme for ALL pages
+const savedTheme = localStorage.getItem("theme");
+if (!savedTheme || savedTheme === "dark") {
+body.classList.remove("light-theme");
+}
+else if (savedTheme === "light") {
+body.classList.add("light-theme");
+}
+/* ==========================
+BACK TO TOP BUTTON
+========================== */
+let topBtn = document.createElement("button");
+topBtn.id = "backTop";
+topBtn.innerText = "↑";
+document.body.appendChild(topBtn);
+
+topBtn.style.cssText = `
+position: fixed; bottom: 30px; right: 30px;
+padding: 12px 17px; font-size: 22px;
+border-radius: 50%; border: none;
+background: #9b6fff; color: white;
+cursor: pointer; display:none; z-index:999999;
+`;
+
+window.addEventListener("scroll", () => {
+topBtn.style.display = window.scrollY > 350 ? "block" : "none";
+});
+
+topBtn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+/* ==========================
+REAL-TIME CLOCK (Footer)
+========================== */
+function updateClock() {
+const clock = document.getElementById("clock");
+if (!clock) return;
+clock.textContent = new Date().toLocaleTimeString();
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+/* ==========================
+FAVORITES SYSTEM (sessionStorage)
+========================== */
+function loadFavorites() {
+return JSON.parse(sessionStorage.getItem("favorites") || "[]");
+}
+function saveFavorites(list) {
+sessionStorage.setItem("favorites", JSON.stringify(list));
+}
+
+// hearts in HOME
+document.querySelectorAll(".fav").forEach(btn => {
+const card = btn.closest(".project-card");
+if (!card) return;
+
+const name = card.querySelector("h3").innerText;
+
+// if already in favorites → active + full heart
+if (loadFavorites().some(x => x.name === name)) {
+btn.classList.add("active");
+btn.textContent = "♥";
+}
+
+btn.addEventListener("click", () => {
+const img = card.querySelector("img").src;
+const desc = card.querySelector("p").innerText;
+
+let favorites = loadFavorites();
+const exists = favorites.find(x => x.name === name);
+
+if (exists) {
+// remove
+favorites = favorites.filter(x => x.name !== name);
+btn.classList.remove("active");
+btn.textContent = "♡";
+} else {
+// add
+favorites.push({ name, img, desc });
+btn.classList.add("active");
+btn.textContent = "♥";
+}
+
+saveFavorites(favorites);
+renderProfileFavorites();
+});
+});
+
+// render favorites in PROFILE
+function renderProfileFavorites() {
+const container = document.querySelector(".profile-right");
+if (!container) return;
+
+const favorites = loadFavorites();
+
+container.innerHTML = `<h2 class="saved-title">Saved Projects 🔖</h2>`;
+
+if (favorites.length === 0) {
+container.innerHTML += `<p class="empty">No saved projects yet.</p>`;
+return;
+}
+
+favorites.forEach(item => {
+container.innerHTML += `
+<div class="saved-card">
+<img src="${item.img}">
+<div>
+<h3>${item.name}</h3>
+<p>${item.desc}</p>
+</div>
+</div>
+`;
+});
+}
+renderProfileFavorites();
+
+/* ==========================
+SEARCH + FILTER (Home)
+========================== */
+const searchInput = document.querySelector(".search");
+const filterBtns = document.querySelectorAll(".filters button");
+const cards = document.querySelectorAll(".project-card");
+
+let currentCategory = "all";
+
+const categoryMap = {
+tourism: ["red sea", "alula", "riyadh art", "qiddiya"],
+heritage: ["diriyah gate", "alula"],
+economy: ["neom", "the line", "green riyadh"],
+nature: ["red sea", "green riyadh", "alula"],
+futuristic: ["neom", "the line", "riyadh art", "qiddiya"]
+};
+
+function applyFilters() {
+if (!cards.length) return;
+
+const searchTerm = searchInput ? searchInput.value.toLowerCase().trim() : "";
+
+cards.forEach(card => {
+const title = card.querySelector("h3").innerText.toLowerCase();
+const desc = card.querySelector("p").innerText.toLowerCase();
+
+// category filter
+let inCategory = true;
+if (currentCategory !== "all") {
+const list = categoryMap[currentCategory] || [];
+inCategory = list.some(key => title.includes(key));
+}
+
+// search filter
+let inSearch = true;
+if (searchTerm) {
+inSearch = title.includes(searchTerm);
+}
+
+card.style.display = (inCategory && inSearch) ? "block" : "none";
+});
+}
+
+// search typing
+if (searchInput) {
+searchInput.addEventListener("input", applyFilters);
+}
+
+// filter buttons
+filterBtns.forEach(btn => {
+btn.addEventListener("click", () => {
+const text = btn.innerText.toLowerCase();
+currentCategory = text; // "all" or tourism, heritage.. etc
+applyFilters();
+});
+});
+
+/* ==========================
+MAP → CLICK → OPEN PAGE
+========================== */
+document.querySelectorAll(".pin").forEach(pin => {
+pin.addEventListener("click", () => {
+const name = pin.dataset.name;
+
+const page = {
+"NEOM": "project-neom.html",
+"Qiddiya": "project-qiddiya.html",
+"Red Sea": "project-redsea.html",
+"AlUla": "project-alula.html",
+"The Line": "project-theline.html",
+"Diriyah Gate": "project-diriyah.html",
+"Green Riyadh": "project-Griyadh.html",
+"Riyadh Art": "project-riyadhart.html"
+}[name];
+
+if (page) window.location.href = page;
+});
+});
+
+/* ==========================
+PROFILE — EDIT INFO (popup)
+========================== */
+document.querySelectorAll(".edit-btn").forEach(btn => {
+btn.addEventListener("click", () => {
+const container = document.querySelector(".profile-container");
+if (!container) return;
+
+const nameEl = container.querySelector(".profile-name");
+const emailEl = container.querySelector(".profile-email");
+const phoneEl = container.querySelector(".profile-phone");
+
+const currentName = nameEl ? nameEl.innerText : "";
+const currentEmail = emailEl ? emailEl.innerText : "";
+const currentPhone = phoneEl ? phoneEl.innerText : "";
+
+const popup = document.createElement("div");
+popup.className = "edit-popup";
+popup.innerHTML = `
+<div class="popup-box">
+<h2>Edit Info</h2>
+
+<label for="editName">Name</label>
+<input type="text" id="editName" value="${currentName}">
+
+<label for="editEmail">Email</label>
+<input type="email" id="editEmail" value="${currentEmail}">
+
+<label for="editPhone">Phone</label>
+<input type="text" id="editPhone" value="${currentPhone}">
+
+<div class="popup-actions">
+<button id="cancelEdit">Cancel</button>
+<button id="saveEdit">Save</button>
+</div>
+</div>
+`;
+document.body.appendChild(popup);
+
+const saveBtn = document.getElementById("saveEdit");
+const cancelBtn = document.getElementById("cancelEdit");
+
+saveBtn.onclick = () => {
+const newName = document.getElementById("editName").value;
+const newEmail = document.getElementById("editEmail").value;
+const newPhone = document.getElementById("editPhone").value;
+
+if (nameEl) nameEl.innerText = newName || currentName;
+if (emailEl) emailEl.innerText = newEmail || currentEmail;
+if (phoneEl) phoneEl.innerText = newPhone || currentPhone;
+
+popup.remove();
+};
+
+cancelBtn.onclick = () => {
+popup.remove();
+};
+});
+});
+
