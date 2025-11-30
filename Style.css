@@ -2674,411 +2674,87 @@ width: 100%;
 
 
 /* ==============================
-   RESPONSIVE FOR PROVIDER PAGES
-   (addNewServer, manage_staff_member, provider)
+   RESPONSIVE FOR PROVIDER PAGES - نفس أسلوب الملف الأصلي
 ============================== */
 
-/* General Box Sizing */
-* {
-box-sizing: border-box;
+/* عرض 900px وأقل - تابلت */
+@media (max-width: 900px) {
+/* addNewServer.html */
+fieldset { width: 85%; padding: 25px; }
+
+/* manage_staff_member.html */
+.staff-grid { gap: 15px; }
+.member-card { width: calc(33.33% - 10px); }
+.add-member-section { padding: 20px; }
+.section-title { font-size: 1.3em; }
+
+/* provider.html */
+.service-card { width: calc(45% - 10px); }
+.action-buttons-container { flex-wrap: wrap; }
 }
 
-/* ===== ADD NEW SERVER PAGE ===== */
-fieldset {
-width: 90%;
-max-width: 800px;
-margin: 20px auto;
+/* عرض 600px وأقل - جوال */
+@media (max-width: 600px) {
+/* addNewServer.html */
+fieldset { 
+    width: 90%; 
+    padding: 15px;
+    margin: 15px auto;
 }
+fieldset legend h2 { font-size: 1.4em; }
+.image-preview { height: 150px; font-size: 0.9em; }
 
-fieldset legend h2 {
-font-size: 1.5em;
-margin: 0;
-}
-
-.input-group {
-margin-bottom: 20px;
-}
-
-.input-group label {
-display: block;
-margin-bottom: 8px;
-font-size: 1rem;
-}
-
-.input-group input,
-.input-group select,
-.input-group textarea {
-width: 100%;
-padding: 12px;
-font-size: 1rem;
-border-radius: 8px;
-}
-
-.input-group textarea {
-min-height: 100px;
-resize: vertical;
-}
-
-.upload-btn,
-button[type="submit"] {
-padding: 12px 24px;
-font-size: 1rem;
-border-radius: 25px;
-transition: all 0.3s;
-}
-
-button[type="submit"] {
-width: 100%;
-}
-
-.image-preview {
-height: 180px;
-font-size: 1rem;
-text-align: center;
-padding: 10px;
-}
-
-/* ===== MANAGE STAFF MEMBER PAGE ===== */
-.container {
-width: 95%;
-max-width: 1200px;
-margin: 0 auto;
-padding: 20px 10px;
-}
-
-.staff-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-gap: 20px;
-padding: 10px 0;
-}
-
-.member-card {
-text-align: center;
-border-radius: 8px;
-padding: 15px 10px;
-}
-
-.photo-placeholder {
-width: 100px;
-height: 100px;
-margin: 0 auto 10px;
-border-radius: 50%;
-}
-
-.delete-btn {
-padding: 12px 24px;
-font-size: 1rem;
-width: 100%;
-max-width: 200px;
-}
-
-.separator {
-margin: 30px 0;
-}
+/* manage_staff_member.html */
+.staff-grid { gap: 12px; }
+.member-card { width: calc(50% - 6px); }
+.photo-placeholder { width: 80px; height: 80px; }
 
 .add-member-section {
-padding: 20px;
-border-radius: 12px;
-position: relative;
+    flex-direction: column;
+    padding: 15px;
 }
-
 .section-title {
-font-size: 1.5em;
-text-align: center;
-margin-bottom: 20px;
+    position: static !important;
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 15px;
 }
-
 .photo-upload-col {
-text-align: center;
-margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
-
-.photo-upload-placeholder {
-width: 180px;
-height: 180px;
-margin: 0 auto 15px;
-border-radius: 8px;
-}
-
+.photo-upload-placeholder { width: 150px; height: 150px; }
 .form-col {
-display: grid;
-grid-template-columns: 1fr;
-gap: 15px;
+    width: 100%;
+    grid-template-columns: 1fr;
+    padding-top: 0 !important;
 }
 
-.input-group {
-display: flex;
-flex-direction: column;
-gap: 8px;
-}
-
-.input-group input[type="text"],
-.input-group input[type="email"],
-.input-group select,
-.input-group textarea {
-padding: 10px;
-font-size: 1rem;
-width: 100%;
-border-radius: 5px;
-}
-
-.input-group textarea {
-resize: vertical;
-min-height: 80px;
-}
-
-.add-btn {
-padding: 12px 24px;
-font-size: 1rem;
-width: 100%;
-}
-
-/* ===== PROVIDER PAGE ===== */
-.content-wrapper {
-padding: 20px 10px;
-}
-
-h1 {
-text-align: center;
-margin: 20px 0;
-font-size: 1.8em;
-}
-
+/* provider.html */
 .services-list-container {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-gap: 20px;
-width: 95%;
-max-width: 1200px;
-margin: 0 auto 30px;
-border-radius: 12px;
-padding: 20px;
+    flex-direction: column;
+    padding: 15px;
 }
-
-.service-card {
-padding: 15px;
-border-radius: 8px;
-}
-
-.service-image {
-width: 100%;
-height: 150px;
-border-radius: 5px;
-}
-
+.service-card { width: 100%; }
+.service-image { height: 120px; }
 .action-buttons-container {
-display: flex;
-flex-direction: column;
-gap: 15px;
-width: 95%;
-max-width: 1200px;
-margin: 0 auto 30px;
+    flex-direction: column;
+    gap: 10px;
 }
-
-.action-button {
-padding: 14px 24px;
-font-size: 1rem;
-text-align: center;
-}
-
-/* ===== TABLET (600px - 1024px) ===== */
-@media screen and (min-width: 600px) {
-/* Add New Server */
-button[type="submit"] {
-width: auto;
-min-width: 150px;
-}
-
-.image-preview {
-height: 200px;
-}
-
-/* Manage Staff */
-.staff-grid {
-grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-}
-
-.form-col {
-grid-template-columns: repeat(2, 1fr);
-}
-
-.input-group.full-span {
-grid-column: 1 / -1;
-}
-
-.add-btn {
-width: auto;
-min-width: 150px;
-justify-self: end;
-}
-
-/* Provider */
-.action-buttons-container {
-flex-direction: row;
-justify-content: flex-start;
-}
-
-.action-button {
-flex: 0 1 auto;
-}
-}
-
-/* ===== DESKTOP (1024px+) ===== */
-@media screen and (min-width: 1024px) {
-/* Add New Server */
-fieldset {
-width: 70%;
-margin: 50px auto;
-padding: 30px;
-}
-
-fieldset legend h2 {
-font-size: 1.8em;
-}
-
-/* Manage Staff */
-.add-member-section {
-display: grid;
-grid-template-columns: 250px 1fr;
-gap: 30px;
-align-items: start;
-}
-
-.section-title {
-position: absolute;
-top: 20px;
-left: 280px;
-margin-bottom: 0;
-}
-
-.photo-upload-col {
-margin-bottom: 0;
-}
-
-.form-col {
-padding-top: 50px;
-}
-
-/* Provider */
-.services-list-container {
-grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-
-.service-image {
-height: 180px;
-}
-}
-
-/* ===== MOBILE SMALL (480px وأقل) ===== */
-@media screen and (max-width: 480px) {
-/* Add New Server */
-fieldset {
-width: 95%;
-padding: 15px;
-margin: 10px auto;
-}
-
-fieldset legend h2 {
-font-size: 1.3em;
-}
-
-.input-group input,
-.input-group select,
-.input-group textarea {
-font-size: 0.95rem;
-padding: 10px;
-}
-
-.upload-btn,
-button[type="submit"] {
-padding: 10px 20px;
-font-size: 0.95rem;
-}
-
-.image-preview {
-height: 150px;
-font-size: 0.9rem;
-}
-
-/* Manage Staff */
-.staff-grid {
-grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-gap: 15px;
-}
-
-.photo-placeholder {
-width: 80px;
-height: 80px;
-}
-
-.member-card {
-padding: 12px 8px;
-}
-
-.member-card strong {
-font-size: 1em;
-}
-
-.section-title {
-font-size: 1.3em;
-}
-
-.photo-upload-placeholder {
-width: 150px;
-height: 150px;
-}
-
-.input-group input[type="text"],
-.input-group input[type="email"],
-.input-group select,
-.input-group textarea {
-font-size: 0.95rem;
-}
-
-/* Provider */
-h1 {
-font-size: 1.4em;
-}
-
-.services-list-container {
-grid-template-columns: 1fr;
-padding: 15px;
-}
-
-.service-card {
-padding: 12px;
-}
-
-.service-image {
-height: 120px;
-}
-
-.action-button {
-padding: 12px 20px;
-font-size: 0.95rem;
-}
+.action-button { width: 100%; }
+h1 { font-size: 1.5em; }
 }
 
 /* ==============================
    LIGHT THEME FOR PROVIDER PAGES
 ============================== */
-
-/* fieldset في صفحة Add New Server */
 .light-theme fieldset {
 background: #ffffff !important;
 border: 1px solid rgba(212,180,99,0.5) !important;
 box-shadow: 0 0 20px rgba(212,180,99,0.2) !important;
 }
-
-.light-theme fieldset legend h2 {
-color: var(--gold) !important;
-}
-
-.light-theme .input-group label {
-color: var(--dark-text) !important;
-}
-
+.light-theme fieldset legend h2 { color: var(--gold) !important; }
+.light-theme .input-group label { color: var(--dark-text) !important; }
 .light-theme .input-group input,
 .light-theme .input-group select,
 .light-theme .input-group textarea {
@@ -3086,119 +2762,57 @@ background: rgba(212,180,99,0.08) !important;
 border: 1px solid rgba(212,180,99,0.4) !important;
 color: var(--dark-text) !important;
 }
-
-.light-theme .input-group input::placeholder,
-.light-theme .input-group select::placeholder,
-.light-theme .input-group textarea::placeholder {
-color: #888 !important;
-}
-
 .light-theme .input-group input:focus,
 .light-theme .input-group select:focus,
 .light-theme .input-group textarea:focus {
 border-color: var(--gold) !important;
 background-color: rgba(212,180,99,0.15) !important;
 }
-
 .light-theme .upload-btn,
 .light-theme button[type="submit"],
 .light-theme .add-btn,
 .light-theme .delete-btn,
 .light-theme .action-button {
 background: linear-gradient(90deg, var(--gold), #e8d7a2) !important;
-color: #fff !important;
 }
-
-.light-theme .upload-btn:hover,
-.light-theme button[type="submit"]:hover,
-.light-theme .add-btn:hover,
-.light-theme .delete-btn:hover,
-.light-theme .action-button:hover {
-box-shadow: 0 0 15px rgba(212,180,99,0.6) !important;
-}
-
 .light-theme .image-preview {
 background-color: rgba(212,180,99,0.08) !important;
 border: 2px dashed var(--gold) !important;
 color: var(--gold) !important;
 }
-
-/* Manage Staff Member Page */
 .light-theme .member-card {
 background-color: #ffffff !important;
 border: 1px solid rgba(212,180,99,0.3) !important;
 color: var(--dark-text) !important;
 }
-
-.light-theme .member-card strong {
-color: var(--dark-text) !important;
-}
-
-.light-theme .photo-placeholder {
-border: 2px solid var(--gold) !important;
-}
-
+.light-theme .member-card strong { color: var(--dark-text) !important; }
+.light-theme .photo-placeholder { border: 2px solid var(--gold) !important; }
 .light-theme .add-member-section {
 background-color: rgba(255,255,255,0.95) !important;
 border: 1px solid rgba(212,180,99,0.3) !important;
 }
-
-.light-theme .section-title {
-color: var(--gold) !important;
-}
-
+.light-theme .section-title { color: var(--gold) !important; }
 .light-theme .photo-upload-placeholder {
 background-color: rgba(212,180,99,0.08) !important;
 border: 2px dashed rgba(212,180,99,0.5) !important;
 }
-
 .light-theme .upload-buttons label {
 background-color: var(--gold) !important;
 color: #fff !important;
 }
-
-.light-theme .upload-buttons label:hover {
-background-color: #c4a453 !important;
-}
-
-/* Provider Dashboard Page */
 .light-theme .services-list-container {
 border: 2px dashed rgba(212,180,99,0.4) !important;
 }
-
 .light-theme .service-card {
 background-color: #ffffff !important;
 border: 1px solid rgba(212,180,99,0.3) !important;
 }
-
-.light-theme .service-card:hover {
-box-shadow: 0 5px 15px rgba(212,180,99,0.4) !important;
-}
-
-.light-theme .card-body p {
-color: var(--soft-text) !important;
-}
-
-.light-theme .service-name {
-color: var(--dark-text) !important;
-}
-
+.light-theme .card-body p { color: var(--soft-text) !important; }
+.light-theme .service-name { color: var(--dark-text) !important; }
 .light-theme .breadcrumb {
 color: var(--soft-text) !important;
 background: rgba(212,180,99,0.08) !important;
 }
-
-/* Container في Manage Staff */
-.light-theme .container {
-color: var(--dark-text) !important;
-}
-
-.light-theme .separator {
-border-top: 1px solid rgba(212,180,99,0.3) !important;
-}
-
-/* تحسين Select في اللايت ثيم */
 .light-theme .input-group select {
 background-color: rgba(212,180,99,0.12) !important;
-color: var(--dark-text) !important;
 }
