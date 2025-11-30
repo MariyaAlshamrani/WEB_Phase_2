@@ -6,19 +6,6 @@
     <title>Service Provider </title>
 	<link rel="stylesheet" href="Style.css">
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .content-wrapper {
-            flex: 1;
-        }
 
         .services-list-container {
             display: flex;
@@ -79,7 +66,6 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
-            margin-bottom: 30px;
             justify-content: flex-start;
         }
 
@@ -100,36 +86,49 @@
     </style>
 </head>
 
+<header class="header">
+    <div class="logo-section">
+        <img class="logo" src="logo.png" alt="logo">
+    </div>
+<h1>Next Saudi - Explore the Future </h1>
+</header>
 
+<nav class="navbar">
+	<ul>
+		<li><a href="index.html">Home</a> </li>
+		<li><a href="services.html">Services</a> </li>
+		<li><a href="FirstPage.html">About Us</a> </li>
+		<li><a href="provider.html" class="active">Provider Dashboard</a> </li>
+		<li><a href="customer_dashboard.html">Customer Dashboard</a></li>
+	</ul>
+</nav>
+
+<body>
 
 <h1>Projects List</h1>
 
-<div class="provider-services-container">
-   
 <div class="services-list-container">
-  
+    
 </div>
 
-<div class="provider-action-buttons">
-    <a href="addNewServer.html" class="provider-action-btn">Add a new project</a>
-    <a href="manage staff member.html" class="provider-action-btn">Manage staff members</a>
 <div class="action-buttons-container">
     <a href="addNewServer.html" class="action-button">Add a new project</a>
     <a href="manage staff member.html" class="action-button">Manage staff members</a>
 </div>
+	
+    <footer>
+        <p>© 2025 Next Saudi. All Rights Reserved.</p>
+        <p>Contact: info@nextsaudi.com | +966 555 2030</p>
+        <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
+    </footer>
 
-</div>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 
-<footer>
-
-  <p>© 2025 Next Saudi. All Rights Reserved.</p>
-
-  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
-  <p class="arabic-touch"> نعيش بحلم .. نصنع المستقبل</p>
-
-</footer>
-
-<script src="script.js"></script>
 
 </body>
-</html>
+
+
+
+
+</html><
