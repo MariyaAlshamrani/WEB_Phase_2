@@ -702,3 +702,472 @@ popup.remove();
 });
 
 
+// ========================================
+// Requirement 6 - Provider Dashboard
+// ========================================
+
+function loadServices() {
+    var container = document.querySelector('.services-list-container');
+    
+    if (!container) {
+        return;
+    }
+    
+    var servicesData = localStorage.getItem('services');
+    
+    if (!servicesData) {
+        container.innerHTML = '<div style="width: 100%; text-align: center; padding: 50px; color: #a98aff; font-size: 1.5em;"><p>No projects available</p><p style="font-size: 0.8em; color: #ccc; margin-top: 10px;">Add a new project to display it here</p></div>';
+        return;
+    }
+    
+    var services = JSON.parse(servicesData);
+    
+    if (services.length == 0) {
+        container.innerHTML = '<div style="width: 100%; text-align: center; padding: 50px; color: #a98aff; font-size: 1.5em;"><p>No projects available</p><p style="font-size: 0.8em; color: #ccc; margin-top: 10px;">Add a new project to display it here</p></div>';
+        return;
+    }
+    
+    for (var i = 0; i < services.length; i++) {
+        var service = services[i];
+        
+        var card = document.createElement('div');
+        card.className = 'service-card';
+        
+        var image = document.createElement('img');
+        image.className = 'service-image';
+        image.alt = 'Service Image';
+        
+        if (service.image) {
+            image.src = service.image;
+        } else {
+            image.src = 'images/placeholder.jpg';
+        }
+        
+        var body = document.createElement('div');
+        body.className = 'card-body';
+        
+        var name = document.createElement('p');
+        name.className = 'service-name';
+        name.textContent = service.name;
+        
+        var city = document.createElement('p');
+        city.className = 'service-city';
+        city.textContent = service.city;
+        
+        var price = document.createElement('p');
+        price.className = 'service-price';
+        price.textContent = service.price + ' SAR';
+        
+        var date = document.createElement('p');
+        date.className = 'service-date';
+        date.textContent = service.date;
+        
+        body.appendChild(name);
+        body.appendChild(city);
+        body.appendChild(price);
+        body.appendChild(date);
+        
+        card.appendChild(image);
+        card.appendChild(body);
+        
+        container.appendChild(card);
+    }
+}
+
+
+// ========================================
+// Requirement 7 - Add New Service
+// ========================================
+
+var imageData = null;
+
+function setupImageUpload() {
+    var fileInput = document.getElementById('service-photo');
+    var preview = document.querySelector('.image-preview');
+    
+    if (!fileInput || !preview) {
+        return;
+    }
+    
+    fileInput.addEventListener('change', function(e) {
+        var fileName = e.target.value;
+        
+        if (fileName) {
+            // just show that a file was selected
+            preview.innerHTML = '<p style="color: #a98aff;">Image selected: ' + fileName.split('\\').pop() + '</p>';
+            imageData = 'images/' + fileName.split('\\').pop();
+        }
+    });
+}
+
+function checkServiceForm() {
+    var name = document.getElementById('service-name').value.trim();
+    var city = document.getElementById('city-select').value;
+    var price = document.getElementById('service-price').value.trim();
+    var desc = document.getElementById('service-description').value.trim();
+    
+    if (!name) {
+        alert('Please enter service name!');
+        return false;
+    }
+    
+    if (!city) {
+        alert('Please select a city!');
+        return false;
+    }
+    
+    if (!price) {
+        alert('Please enter service price!');
+        return false;
+    }
+    
+    if (!desc) {
+        alert('Please enter service description!');
+        return false;
+    }
+    
+    // check if name starts with number
+    if (/^\d/.test(name)) {
+        alert('Service name cannot start with numbers!');
+        return false;
+    }
+    
+    // check if price is number
+    if (isNaN(price) || parseFloat(price) <= 0) {
+        alert('Price must be a valid positive number!');
+        return false;
+    }
+    
+    return true;
+}
+
+function saveToLocalStorage(data) {
+    var services = [];
+    var stored = localStorage.getItem('services');
+    
+    if (stored) {
+        services = JSON.parse(stored);
+    }
+    
+    services.push(data);
+    localStorage.setItem('services', JSON.stringify(services));
+}
+
+function clearForm() {
+    document.getElementById('service-name').value = '';
+    document.getElementById('city-select').value = '';
+    document.getElementById('service-price').value = '';
+    document.getElementById('service-description').value = '';
+    document.getElementById('service-photo').value = '';
+    
+    var preview = document.querySelector('.image-preview');
+    if (preview) {
+        preview.innerHTML = 'Click "Choose Image" to upload a photo';
+    }
+    imageData = null;
+}
+
+function submitService(e) {
+    e.preventDefault();
+    
+    if (!checkServiceForm()) {
+        return;
+    }
+    
+    var name = document.getElementById('service-name').value.trim();
+    var city = document.getElementById('city-select').value;
+    var price = document.getElementById('service-price').value.trim();
+    var desc = document.getElementById('service-description').value.trim();
+    
+    var now = new Date();
+    var dateStr = now.toLocaleString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+    
+    var serviceData = {
+        name: name,
+        city: city,
+        price: price,
+        description: desc,
+        date: dateStr,
+        image: imageData
+    };
+    
+    saveToLocalStorage(serviceData);
+    
+    alert('Service "' + name + '" has been added successfully!');
+    
+    clearForm();
+}
+
+function initAddPage() {
+    var form = document.querySelector('form[action="provider.html"]');
+    if (!form) {
+        return;
+    }
+    
+    setupImageUpload();
+    form.addEventListener('submit', submitService);
+}
+
+
+// ========================================
+// Requirement 8 - Manage Staff Members
+// ========================================
+
+var staffList = [];
+
+function loadStaffFromHTML() {
+    var cards = document.querySelectorAll('.member-card');
+    
+    staffList = [];
+    for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var img = card.querySelector('.photo-placeholder img');
+        var name = card.querySelector('strong').textContent;
+        
+        staffList.push({
+            name: name,
+            image: img ? img.src : 'images/default-avatar.png'
+        });
+    }
+}
+
+function deleteStaff() {
+    var checkboxes = document.querySelectorAll('.member-card input[type="checkbox"]');
+    var toDelete = [];
+    var count = 0;
+    
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            toDelete.push(i);
+            count++;
+        }
+    }
+    
+    if (count == 0) {
+        alert('Please select at least one offer');
+        return;
+    }
+    
+    var confirm_delete = confirm('Are you sure you want to delete ' + count + ' member(s)?');
+    
+    if (!confirm_delete) {
+        return;
+    }
+    
+    // delete from end to start
+    for (var i = toDelete.length - 1; i >= 0; i--) {
+        staffList.splice(toDelete[i], 1);
+    }
+    
+    showStaff();
+}
+
+function showStaff() {
+    var grid = document.querySelector('.staff-grid');
+    
+    if (!grid) {
+        return;
+    }
+    
+    grid.innerHTML = '';
+    
+    for (var i = 0; i < staffList.length; i++) {
+        var member = staffList[i];
+        
+        var card = document.createElement('div');
+        card.className = 'member-card';
+        
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        
+        var photoDiv = document.createElement('div');
+        photoDiv.className = 'photo-placeholder';
+        
+        var img = document.createElement('img');
+        img.src = member.image;
+        img.alt = 'staff';
+        
+        photoDiv.appendChild(img);
+        
+        var nameTag = document.createElement('strong');
+        nameTag.textContent = member.name;
+        
+        card.appendChild(checkbox);
+        card.appendChild(photoDiv);
+        card.appendChild(nameTag);
+        
+        grid.appendChild(card);
+    }
+}
+
+var memberPhoto = null;
+
+function setupPhotoUpload() {
+    var input = document.getElementById('uplod');
+    var placeholder = document.querySelector('.photo-upload-placeholder');
+    
+    if (!input || !placeholder) {
+        return;
+    }
+    
+    input.addEventListener('change', function(e) {
+        var fileName = e.target.value;
+        
+        if (fileName) {
+            // just show that a file was selected
+            placeholder.innerHTML = '<p style="color: #a98aff; padding: 20px;">Photo selected</p>';
+            memberPhoto = 'images/' + fileName.split('\\').pop();
+        }
+    });
+}
+
+function checkMemberForm() {
+    var name = document.getElementById('name').value.trim();
+    var edu = document.getElementById('education').value;
+    var dob = document.getElementById('dob').value.trim();
+    var skills = document.getElementById('skills').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var expertise = document.getElementById('expertise').value.trim();
+    
+    if (!name) {
+        alert('Please enter member name!');
+        return false;
+    }
+    
+    if (!edu || edu == 'select') {
+        alert('Please select education level!');
+        return false;
+    }
+    
+    if (!dob) {
+        alert('Please enter date of birth!');
+        return false;
+    }
+    
+    if (!skills) {
+        alert('Please enter skills!');
+        return false;
+    }
+    
+    if (!email) {
+        alert('Please enter email!');
+        return false;
+    }
+    
+    if (!expertise) {
+        alert('Please enter area of expertise!');
+        return false;
+    }
+    
+    // name cant start with number
+    if (/^\d/.test(name)) {
+        alert('Name cannot start with numbers!');
+        return false;
+    }
+    
+    // check email
+    var emailCheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailCheck.test(email)) {
+        alert('Please enter a valid email address!');
+        return false;
+    }
+    
+    // check date format
+    var dateCheck = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (!dateCheck.test(dob)) {
+        alert('Please enter date of birth in format: DD/MM/YYYY');
+        return false;
+    }
+    
+    return true;
+}
+
+function addMember(e) {
+    e.preventDefault();
+    
+    if (!checkMemberForm()) {
+        return;
+    }
+    
+    var name = document.getElementById('name').value.trim();
+    var edu = document.getElementById('education').value;
+    var dob = document.getElementById('dob').value.trim();
+    var skills = document.getElementById('skills').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var expertise = document.getElementById('expertise').value.trim();
+    
+    var newMember = {
+        name: name,
+        education: edu,
+        dob: dob,
+        skills: skills,
+        email: email,
+        expertise: expertise,
+        image: memberPhoto || 'images/default-avatar.png'
+    };
+    
+    staffList.push(newMember);
+    
+    showStaff();
+    
+    alert('Staff member "' + name + '" has been added successfully!');
+    
+    clearMemberForm();
+}
+
+function clearMemberForm() {
+    document.getElementById('name').value = '';
+    document.getElementById('education').value = 'select';
+    document.getElementById('dob').value = '';
+    document.getElementById('skills').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('expertise').value = '';
+    document.getElementById('uplod').value = '';
+    
+    var placeholder = document.querySelector('.photo-upload-placeholder');
+    if (placeholder) {
+        placeholder.innerHTML = '';
+    }
+    memberPhoto = null;
+}
+
+function initStaffPage() {
+    var grid = document.querySelector('.staff-grid');
+    if (!grid) {
+        return;
+    }
+    
+    loadStaffFromHTML();
+    
+    var deleteBtn = document.querySelector('.delete-btn');
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', deleteStaff);
+    }
+    
+    setupPhotoUpload();
+    
+    var addBtn = document.querySelector('.add-btn');
+    if (addBtn) {
+        addBtn.addEventListener('click', addMember);
+    }
+}
+
+
+// ========================================
+// Initialize everything when page loads
+// ========================================
+
+window.addEventListener('DOMContentLoaded', function() {
+    loadServices();
+    initAddPage();
+    initStaffPage();
+});
+
+
+
