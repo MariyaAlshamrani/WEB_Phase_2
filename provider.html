@@ -6,6 +6,20 @@
     <title>Service Provider </title>
 	<link rel="stylesheet" href="Style.css">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            flex: 1;
+        }
+
         .services-list-container {
             display: flex;
             gap: 20px;
@@ -65,7 +79,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             justify-content: flex-start;
         }
 
@@ -88,11 +102,13 @@
 
 <body>
 
+<div class="content-wrapper">
+
 <header class="header">
     <div class="logo-section">
         <img class="logo" src="logo.png" alt="logo">
     </div>
-    <h1>Next Saudi - Explore the Future </h1>
+<h1>Next Saudi - Explore the Future </h1>
 </header>
 
 <nav class="navbar">
@@ -108,7 +124,7 @@
 <h1>Projects List</h1>
 
 <div class="services-list-container">
-    
+   
 </div>
 
 <div class="action-buttons-container">
@@ -116,14 +132,18 @@
     <a href="manage staff member.html" class="action-button">Manage staff members</a>
 </div>
 
+</div>
+
+<footer>
+
+  <p>© 2025 Next Saudi. All Rights Reserved.</p>
+
+  <p>Contact: info@nextsaudi.com | +966 555 2030</p>
+  <p class="arabic-touch"> نعيش بحلم .. نصنع المستقبل</p>
+
+</footer>
+
 <script src="script.js"></script>
 
 </body>
-
-<footer>
-    <p>© 2025 Next Saudi. All Rights Reserved.</p>
-    <p>Contact: info@nextsaudi.com | +966 555 2030</p>
-    <p class="arabic-touch">نعيش بحلم .. نصنع المستقبل</p>
-</footer>
-
 </html>
