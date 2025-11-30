@@ -32,13 +32,15 @@
         }
 
         .services-list-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
             gap: 20px;
             width: 95%;
             max-width: 1200px;
             margin: 0 auto 30px;
-            min-height: 150px;
+            min-height: 300px;
             border: 2px dashed rgba(169, 138, 255, 0.3);
             border-radius: 12px;
             padding: 20px;
@@ -129,20 +131,19 @@
 
         /* Empty State */
         .empty-state {
-            grid-column: 1 / -1;
+            width: 100%;
             text-align: center;
-            padding: 60px 20px;
-            color: #a98aff;
+            padding: 40px 20px;
         }
 
         .empty-state h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            margin-bottom: 15px;
             color: #a98aff;
         }
 
         .empty-state p {
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: #ccc;
             line-height: 1.6;
         }
@@ -162,7 +163,11 @@
         /* Desktop */
         @media screen and (min-width: 1024px) {
             .services-list-container {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                min-height: 400px;
+            }
+
+            .service-card {
+                width: calc(25% - 20px);
             }
 
             .service-image {
@@ -172,16 +177,12 @@
 
         /* Mobile Small */
         @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 1.4em;
-            }
-
             .services-list-container {
-                grid-template-columns: 1fr;
-                padding: 15px;
+                min-height: 250px;
             }
 
             .service-card {
+                width: 100%;
                 padding: 12px;
             }
 
@@ -192,6 +193,14 @@
             .action-button {
                 padding: 12px 20px;
                 font-size: 0.95rem;
+            }
+            
+            .empty-state h3 {
+                font-size: 1.4em;
+            }
+            
+            .empty-state p {
+                font-size: 1em;
             }
         }
     </style>
