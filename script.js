@@ -628,13 +628,13 @@ const name = pin.dataset.name;
 
 const page = {
 "NEOM": "project-neom.html",
-"Qiddiya": "project-qiddiya.html",
-"Red Sea": "project-redsea.html",
-"AlUla": "project-alula.html",
-"The Line": "project-theline.html",
-"Diriyah Gate": "project-diriyah.html",
+"Qiddiya": "project-Qiddiya.html",
+"Red Sea": "project-RedSea.html",
+"AlUla": "project-alUla.html",
+"The Line": "project-TheLine.html",
+"Diriyah Gate": "project-Diriyah.html",
 "Green Riyadh": "project-Griyadh.html",
-"Riyadh Art": "project-riyadhart.html"
+"Riyadh Art": "project-RiyadhArt.html"
 }[name];
 
 if (page) window.location.href = page;
@@ -700,4 +700,5 @@ popup.remove();
 };
 });
 });
+
 
